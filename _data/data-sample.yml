@@ -1,0 +1,75 @@
+meta:
+  title: Platform # Template will append "Properties"
+  description: |
+    This is some awesome text that describes the platform properties category and anything particularly special about it. Feel free to use AsciiDoc formatting here, as it will be parsed.
+
+    [NOTE]
+    You can even use AsciiDoc admonitions and other block elements if you choose.
+  sections: # List all of the categories of properties in this file
+    - name: General
+    - name: Per-pipeline
+      instructions: |
+        These are some special instructions for using per-pipeline properties.
+
+        [NOTE]
+        You gotta admit this is pretty cool.
+        Wicked.
+    - name: Security
+  addenda: |
+    some.testsetting = going live
+    this.test.setting = exposed!
+
+properties:
+  - key: some_property-name
+    property: some.property-name
+    section: General
+    description: |
+      This is some text in `AsciiDoc`, with *bold*.
+    default: 15
+    hidden: false
+    example: some.property-name = 22
+    openblock: |
+      .Example Two
+      ----
+      This is some text that will convert to a code listing.
+      ----
+
+  - key: another_property-name
+    property: another.property-name
+    section: Security
+    description: |
+      A different description for this _resource_.
+    default: true
+    example: |
+      # This should appear as a literal.
+      another.property-name = whatever
+    example_suppressed: false
+
+  - key: pipeline_name_some-setting
+    property: pipeline.<name>.some-setting
+    section: Per-pipeline
+    description: |
+      This property has a great description. What if I start a new line? Does this collapse like I'd like?
+    required: true
+    default: 24
+    example: pipeline.events.some-setting = 12
+
+  - key: some_scary-setting
+    property: some.scary-setting
+    section: General
+    description: |
+      This is some text in `AsciiDoc`, with *bold*.
+    default: true
+    required: false
+    hidden: true
+    type: int
+    regex: "[0-9]{2}"
+
+  - key: pipeline_name_another-thing
+    property: pipeline.<name>.another-thing
+    section: Per-pipeline
+    description: |
+      This setting has not a lot to say. It's pretty straightforward.
+    required: true
+    example: pipeline.<name>.another-thing = default
+    type: int

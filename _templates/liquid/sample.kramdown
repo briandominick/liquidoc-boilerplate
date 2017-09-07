@@ -1,0 +1,24 @@
+# {{ meta.title }} Properties
+
+{{ meta.description }}{% for section in meta.sections %}
+
+## {{ section.name }} Settings {% if section.instructions %}
+
+{{ section.instructions }}{% endif %}{% for p in properties %}{% if p.section == section.name %}{% if p.hidden != true %}
+
+### {{ p.property }}
+{{ p.description | strip_newlines }}
+
+Default
+: {{ p.default }}{% if p.default == nil %}none{% endif %}
+
+Required
+: {% if required == true %}yes{% else %}no{% endif %}
+{% if p.example %}
+
+Example
+```
+{{ p.example }}
+```{% endif %}{% endif %}{% endif %}{% endfor %}{% endfor %}
+
+{{ meta.addenda }}

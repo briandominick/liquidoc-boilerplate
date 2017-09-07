@@ -1,0 +1,37 @@
+= LiquiDoc Boilerplate
+
+This repo contains a basic file structure for getting started quickly with link:https://github.com/scalingdata/liquidoc-gem[LiquiDoc].
+
+Simply clone this repo and you can begin running LiquiDoc builds based on sample configs, source data, and parsing templates.
+
+== Installing LiquiDoc
+
+See link:https://github.com/scalingdata/liquidoc-gem[LiquiDoc].
+
+== Sample Builds
+
+Try some sample builds to see how Liquidoc works.
+
+----
+bundle exec liquidoc -c _configs/sample.yml
+----
+
+This uses the designated configuration file to instruct a multi-source, multi-output build.
+You'll find the seven generated output in the `_output/` directory.
+
+Six of these files were derived from three identical datasets in three different source formats: JSON, YAML, and XML.
+All three sources were each processed through two different templates: one pressing the data into Markdown, the other into AsciiDoc.
+
+The seventh file -- `sample-csv.html` -- was derived from a simple CSV data source.
+
+Now try:
+
+----
+bundle exec liquidoc -c _configs/build-sample-book.yml
+----
+
+That should generate two more AsciiDoc files in `_output/`.
+
+== License
+
+These files are copyright (c) Brian Dominick 2017, released under the MIT License, no warrantees, etc.

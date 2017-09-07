@@ -1,0 +1,27 @@
+compile:
+- source:
+  data: _data/data-sample.yml
+  builds:
+  - template: _templates/liquid/sample.asciidoc
+    output: _output/sample-yaml.adoc
+  - template: _templates/liquid/sample.kramdown
+    output: _output/sample-yaml.md
+- source:
+  data: _data/data-sample.json
+  builds:
+  - template: _templates/liquid/sample.asciidoc
+    output: _output/sample-json.adoc
+  - template: _templates/liquid/sample.kramdown
+    output: _output/sample-json.md
+- source:
+  data: _data/data-sample.xml
+  builds:
+  - template: _templates/liquid/sample.asciidoc
+    output: _output/sample-xml.adoc
+  - template: _templates/liquid/sample.kramdown
+    output: _output/sample-xml.md
+- source:
+  data: _data/data-sample.csv
+  builds:
+  - template: _templates/liquid/csv-sample.html
+    output: _output/sample-csv.html

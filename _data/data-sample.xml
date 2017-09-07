@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <meta>
+    <title>Platform</title>
+    <description>This is some awesome text that describes the platform properties category and anything particularly special about it. Feel free to use AsciiDoc formatting here, as it will be parsed.
+
+[NOTE]
+You can even use AsciiDoc admonitions and other block elements if you choose.
+</description>
+    <sections>
+      <name>General</name>
+    </sections>
+    <sections>
+      <name>Per-pipeline</name>
+      <instructions>These are some special instructions for using per-pipeline properties.
+
+[NOTE]
+You gotta admit this is pretty cool.
+Wicked.
+</instructions>
+    </sections>
+    <sections>
+      <name>Security</name>
+    </sections>
+    <addenda>some.testsetting = going live
+this.test.setting = exposed!
+</addenda>
+  </meta>
+  <properties>
+    <key>some_property-name</key>
+    <property>some.property-name</property>
+    <section>General</section>
+    <description>This is some text in `AsciiDoc`, with *bold*.
+</description>
+    <default>15</default>
+    <hidden>false</hidden>
+    <example>some.property-name = 22</example>
+    <openblock>.Example Two
+----
+This is some text that will convert to a code listing.
+----
+</openblock>
+  </properties>
+  <properties>
+    <key>another_property-name</key>
+    <property>another.property-name</property>
+    <section>Security</section>
+    <description>A different description for this _resource_.
+</description>
+    <default>true</default>
+    <example># This should appear as a literal.
+another.property-name = whatever
+</example>
+    <example_suppressed>false</example_suppressed>
+  </properties>
+  <properties>
+    <key>pipeline_name_some-setting</key>
+    <property>pipeline.&lt;name&gt;.some-setting</property>
+    <section>Per-pipeline</section>
+    <description>This property has a great description. What if I start a new line? Does this collapse like I&#x27;d like?
+</description>
+    <required>true</required>
+    <default>24</default>
+    <example>pipeline.events.some-setting = 12</example>
+  </properties>
+  <properties>
+    <key>some_scary-setting</key>
+    <property>some.scary-setting</property>
+    <section>General</section>
+    <description>This is some text in `AsciiDoc`, with *bold*.
+</description>
+    <default>true</default>
+    <required>false</required>
+    <hidden>true</hidden>
+    <type>int</type>
+    <regex>[0-9]{2}</regex>
+  </properties>
+  <properties>
+    <key>pipeline_name_another-thing</key>
+    <property>pipeline.&lt;name&gt;.another-thing</property>
+    <section>Per-pipeline</section>
+    <description>This setting has not a lot to say. It&#x27;s pretty straightforward.
+</description>
+    <required>true</required>
+    <example>pipeline.&lt;name&gt;.another-thing = default</example>
+    <type>int</type>
+  </properties>
+</root>

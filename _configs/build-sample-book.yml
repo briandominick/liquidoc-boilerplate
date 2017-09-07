@@ -1,0 +1,25 @@
+compile:
+  - source:
+    data: _data/glossary.yml
+    builds:
+      - template: _templates/liquid/glossary.asciidoc
+        output: _output/glossary.adoc
+  - source:
+    data: _data/bibliography.yml
+    builds:
+      - template: _templates/liquid/bibliography.asciidoc
+        output: _output/bibliography.adoc
+
+publish:
+  - index: index-book-sample.adoc
+    attributes: _config/asciidoctor.yml
+    doctype: book
+    builds:
+      - publish: true
+        output: _output/sample-book.html
+        theme: theme/pdf-theme.yml
+        type: html
+        assets_from: images
+      - publish: true
+        output: _output/sample-book.pdf
+        type: pdf

@@ -1,0 +1,38 @@
+# Common
+USERNAME [a-zA-Z0-9._-]+
+USER %{USERNAME}
+INT (?:[+-]?(?:[0-9]+))
+BASE10NUM (?<![0-9.+-])(?>[+-]?(?:(?:[0-9]+(?:\.[0-9]+)?)|(?:\.[0-9]+)))
+NUMBER (?:%{BASE10NUM})
+BASE16NUM (?<![0-9A-Fa-f])(?:[+-]?(?:0x)?(?:[0-9A-Fa-f]+))
+BASE16FLOAT \b(?<![0-9A-Fa-f.])(?:[+-]?(?:0x)?(?:(?:[0-9A-Fa-f]+(?:\.[0-9A-Fa-f]*)?)|(?:\.[0-9A-Fa-f]+)))\b
+POSINT \b(?:[1-9][0-9]*)\b
+NONNEGINT \b(?:[0-9]+)\b
+WORD \b\w+\b
+NOTSPACE \S+
+SPACE \s*
+DATA .*?
+GREEDYDATA .*
+QUOTEDSTRING (?>(?<!\\)(?>"(?>\\.|[^\\"]+)+"|""|(?>'(?>\\.|[^\\']+)+')|''|(?>`(?>\\.|[^\\`]+)+`)|``))
+UUID [A-Fa-f0-9]{8}-(?:[A-Fa-f0-9]{4}-){3}[A-Fa-f0-9]{12}
+
+# Dates and Times
+YEAR (?>\d\d){1,2}
+HOUR (?:2[0123]|[01]?[0-9])
+MINUTE (?:[0-5][0-9])
+# '60' is a leap second in most time standards and thus is valid.
+SECOND (?:(?:[0-5]?[0-9]|60)(?:[:.,][0-9]+)?)
+TIME (?!<[0-9])%{HOUR}:%{MINUTE}(?::%{SECOND})(?![0-9])
+# datestamp is YYYY/MM/DD-HH:MM:SS.UUUU (or something like it)
+DATE_US %{MONTHNUM}[/-]%{MONTHDAY}[/-]%{YEAR}
+DATE_EU %{MONTHDAY}[./-]%{MONTHNUM}[./-]%{YEAR}
+ISO8601_TIMEZONE (?:Z|[+-]%{HOUR}(?::?%{MINUTE}))
+ISO8601_SECOND (?:%{SECOND}|60)
+TIMESTAMP_ISO8601 %{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:?%{MINUTE}(?::?%{SECOND})?%{ISO8601_TIMEZONE}?
+DATE %{DATE_US}|%{DATE_EU}
+DATESTAMP %{DATE}[- ]%{TIME}
+TZ (?:[PMCE][SD]T|UTC)
+DATESTAMP_RFC822 %{DAY} %{MONTH} %{MONTHDAY} %{YEAR} %{TIME} %{TZ}
+DATESTAMP_RFC2822 %{DAY}, %{MONTHDAY} %{MONTH} %{YEAR} %{TIME} %{ISO8601_TIMEZONE}
+DATESTAMP_OTHER %{DAY} %{MONTH} %{MONTHDAY} %{TIME} %{TZ} %{YEAR}
+DATESTAMP_EVENTLOG %{YEAR}%{MONTHNUM2}%{MONTHDAY}%{HOUR}%{MINUTE}%{SECOND}

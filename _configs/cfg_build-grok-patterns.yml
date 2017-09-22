@@ -1,0 +1,11 @@
+compile:
+  - source:
+    data:
+      file: _data/patterns.grok
+      type: regex
+      pattern: (?<label>[A-Z0-9_]+)\s(?<expansion>.*)\n
+    builds:
+      - template: _templates/liquid/grok-patterns-listing.asciidoc
+        output: _output/grok-patterns-listing.adoc
+      - template: _templates/liquid/grok-patterns.jsontpl
+        output: _output/grok-patterns.json

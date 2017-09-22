@@ -1,0 +1,6 @@
+{ {% for r in data %}
+  {
+    "label": "{{ r.label }}",
+    "expansion": "{{ r.expansion }}"
+  }{% unless forloop.last %},{% endunless %}{% endfor %}
+}

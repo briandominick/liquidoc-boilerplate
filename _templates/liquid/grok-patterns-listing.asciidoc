@@ -1,0 +1,17 @@
+= Weird Regex Pattern Handling
+
+This page performs layout against fairly arbitrary source data in the form of regular expressions.
+The source file is a text file with one record per line. Each record is a solid string (alphanumeric with underscores) followed by a single space and then a Grok pattern.
+We will use two different templates to output the same source in two different formats.
+This AsciiDoc file is the result of one of those templates (`_templates/grok-patterns-listing.adoc`).
+
+[cols="1s,5m",options=header]
+|===
+| Pattern Label
+| Pattern expansion
+{% for r in data %}
+| {{ r.label }}
+| {{ r.expansion | replace: '|', '\|' }}{% endfor %}
+|===
+
+Patterns derived from link:https://github.com/elastic/logstash/blob/v1.4.2/patterns/grok-patterns[https://github.com/elastic/logstash/blob/v1.4.2/patterns/grok-patterns]
